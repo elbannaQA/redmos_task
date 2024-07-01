@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import utils.Locators;
 import utils.SeleniumActions;
 import utils.SeleniumBase;
@@ -14,13 +15,15 @@ public class HomePage extends SeleniumBase {
     SeleniumActions actions = new SeleniumActions();
     Locators locators = new Locators();
 
-    public void hitAllCustomersPage() throws InterruptedException {
+    public void hitAllCustomersPage(){
 
-        Thread.sleep(10000);
-        WebElement shadowHost = driver.findElement(By.cssSelector("convertedin-sidebar"));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(locators.shadowHost));
+        WebElement shadowHost = driver.findElement(locators.shadowHost);
         SearchContext shadowRoot = shadowHost.getShadowRoot();
         System.out.println(shadowRoot);
-        shadowRoot.findElement(By.cssSelector(".p-accordion .p-element .p-accordion-header-link")).click();
+        shadowRoot.findElement(locators.peopleSubMenLink).click();
+
+
 
 
 

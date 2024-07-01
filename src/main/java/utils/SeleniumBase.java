@@ -12,11 +12,9 @@ public class SeleniumBase {
     public static WebDriverWait wait;
 
     public WebDriver seleniumConfig(){
-        //WebDriverManager.chromedriver().setup();
-        //System.setProperty("webdriver.chrome.driver","D:\\My Workspace\\redmos_tas\\src\\main\\resources\\chromedriver.exe");
         driver = new ChromeDriver();
         wait = new WebDriverWait(driver,Duration.ofMinutes(1));
-        driver.manage().window().maximize();
+        //driver.manage().window().maximize();
         return driver;
     }
 

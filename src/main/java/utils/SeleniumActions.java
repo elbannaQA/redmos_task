@@ -11,58 +11,37 @@ import java.security.Key;
 public class SeleniumActions extends SeleniumBase{
     public SeleniumActions(){}
     public void click(By path) {
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-        WebElement Click = driver.findElement(path);
+//        try {
+//            Thread.sleep(1000);
+//        } catch (InterruptedException e) {
+//            throw new RuntimeException(e);
+//        }
         waitUntil(Waits.ELEMENT_TO_BE_CLICKABLE,path);
-        //wait.until(ExpectedConditions.elementToBeClickable(path));
+        WebElement Click = driver.findElement(path);
         Click.click();
     }
     public void sendKeys(By path, String text) {
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        waitUntil(Waits.ELEMENT_TO_BE_CLICKABLE,path);
         WebElement SendKey = driver.findElement(path);
         SendKey.sendKeys(text);
     }
     public void sendKeysAndEnter(By path, String text){
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        waitUntil(Waits.ELEMENT_TO_BE_CLICKABLE,path);
         WebElement sendKey = driver.findElement(path);
         sendKey.sendKeys(text + Keys.ENTER);
     }
     public String getText(By path) {
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        waitUntil(Waits.ELEMENT_TO_BE_CLICKABLE,path);
         WebElement GetText = driver.findElement(path);
         return GetText.getText();
     }
     public void clear(By path) {
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        waitUntil(Waits.ELEMENT_TO_BE_CLICKABLE,path);
         WebElement ClearText = driver.findElement(path);
         ClearText.clear();
     }
     public boolean isDisplayed(By path){
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        waitUntil(Waits.ELEMENT_TO_BE_CLICKABLE,path);
         WebElement isDisplayed = driver.findElement(path);
         return isDisplayed.isDisplayed();
     }
@@ -72,11 +51,7 @@ public class SeleniumActions extends SeleniumBase{
     }
     public void hoverOnElement(By path) {
         Actions actions = new Actions(driver);
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        waitUntil(Waits.ELEMENT_TO_BE_CLICKABLE,path);
         WebElement Hover = driver.findElement(path);
         actions.moveToElement(Hover).perform();
     }
